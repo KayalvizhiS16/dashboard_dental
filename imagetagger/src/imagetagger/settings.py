@@ -39,6 +39,7 @@ class Base(Configuration):
 
     MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
+        'whitenoise.middleware.WhiteNoiseMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
@@ -242,6 +243,8 @@ class Dev(Base):
 
 
 class Prod(Base):
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    CSRF_TRUSTED_ORIGINS = values.ListValue(environ_prefix='IT', default=['https://*.onrender.com'])
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = values.Value(environ_prefix='IT', environ_required=True)
     EMAIL_PORT = values.Value(environ_prefix='IT')
