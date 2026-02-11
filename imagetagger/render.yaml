@@ -9,6 +9,7 @@ services:
     name: imagetagger
     runtime: python
     plan: free
+    rootDir: imagetagger
     buildCommand: bash build.sh
     startCommand: cd src && gunicorn imagetagger.wsgi:application --bind 0.0.0.0:$PORT
     envVars:

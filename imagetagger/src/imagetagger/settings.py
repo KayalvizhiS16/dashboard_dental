@@ -244,7 +244,7 @@ class Dev(Base):
 
 class Prod(Base):
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    CSRF_TRUSTED_ORIGINS = values.ListValue(environ_prefix='IT', default=['https://*.onrender.com'])
+    CSRF_TRUSTED_ORIGINS = values.ListValue(environ_prefix='IT', default=['https://*.onrender.com', 'https://*.koyeb.app'])
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = values.Value(environ_prefix='IT', environ_required=True)
     EMAIL_PORT = values.Value(environ_prefix='IT')
