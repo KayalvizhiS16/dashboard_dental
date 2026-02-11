@@ -6,6 +6,7 @@ django-widget-tweaks~=1.5
 djangorestframework~=3.14
 fasteners~=0.19
 fs~=2.4
+setuptools<78
 pillow~=10.2
 psycopg2-binary~=2.9
 gunicorn~=22.0
